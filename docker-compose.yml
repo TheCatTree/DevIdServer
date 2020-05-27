@@ -1,0 +1,39 @@
+version: '3.7'
+
+services: 
+
+    devidentityserver:
+        build: .
+        container_name: devIdentityServer
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+        volumes:
+            - ${USERPROFILE}\.aspnet\https:/root/.aspnet/https/
+            - ${APPDATA}/Microsoft/UserSecrets/:/root/.microsoft/usersecrets
+        ports:
+            - "8986:8986"
+            - "8987:8987"
+
+                mvcclient:
+        build: ./devIdentityServer/MVCClient
+        container_name: MVCClient
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+        volumes:
+            - ${USERPROFILE}\.aspnet\https:/root/.aspnet/https/
+            - ${APPDATA}/Microsoft/UserSecrets/:/root/.microsoft/usersecrets
+        ports:
+            - "9002:9002"
+            - "9003:9003"
+
+    mvcclient:
+        build: ./devIdentityServer/MVCClient
+        container_name: MVCClient
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+        volumes:
+            - ${USERPROFILE}\.aspnet\https:/root/.aspnet/https/
+            - ${APPDATA}/Microsoft/UserSecrets/:/root/.microsoft/usersecrets
+        ports:
+            - "9002:9002"
+            - "9003:9003"

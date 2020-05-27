@@ -1,0 +1,8 @@
+secrets/
+obj/
+.vs*/
+bin/
+MVCClient/secrets/
+MVCClient/obj/
+MVCClient/.vs*/
+MVCClient/bin/

@@ -1,0 +1,17 @@
+version: '3.7'
+
+services: 
+
+    mvcclient:
+        build: .
+        container_name: MVCClient
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+        volumes:
+            - ${USERPROFILE}\.aspnet\https:/root/.aspnet/https/
+            - ${APPDATA}/Microsoft/UserSecrets/:/root/.microsoft/usersecrets
+        ports:
+            - "9002:9002"
+            - "9003:9003"
+        #depends_on: 
+            #- postgres
